@@ -11,6 +11,7 @@ header{
     padding: 0 30px;
     background: transparent;
     transition: all ease 0.5s;
+    width: 100%;
 
 }
 
@@ -35,3 +36,6 @@ header.black{
     border-radius: 3px;
 }
 
+@media(max-width: 760px){
+
+}

@@ -3,6 +3,12 @@ import './FeaturedMovie.css'
 
 
 const FeaturedMovie = ({item}) => {
+    /* 
+        let description = item.overview;
+        if(description.length > 200){
+            description = description.substring(0, 20)
+        }
+    */
 
     let firsDate = new Date(item.first_air_date);
     let genres = [];

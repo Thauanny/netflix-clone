@@ -72,7 +72,7 @@ const App = () => {
 
       </section>
 
-      <footer>
+      <footer className="footer">
           Feito por Thauanny com a ajuda de B7Web
           Direitos de imagem para Netflix
           Dados pegos do site Themoviedb.org

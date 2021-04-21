@@ -34,3 +34,11 @@ footer{
 
  
 }
+
+@media(max-width: 760px){
+  .footer{
+    font-size: 14px;
+    margin-left: 30px;
+    margin-right: 30px;
+  }
+}
