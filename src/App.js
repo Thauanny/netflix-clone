@@ -3,6 +3,7 @@ import './App.css'
 import Tmdb from './Tmdb';
 import MovieRow from './components/MovieRow'
 import FeaturedMovie from './components/FeaturedMovie'
+import Header from './components/Header'
 
 
 
@@ -10,6 +11,7 @@ const App = () => {
 
   const [MovieList, setMovieList] = useState([]);
   const [featuredData, setFeaturedData] = useState(null);
+  const [blackHeader, setBlackHeader] = useState(false);
 
   useEffect(()=>{
     const loadAll = async () => {
@@ -28,21 +30,64 @@ const App = () => {
     loadAll();
   }, []);
 
+  useEffect(()=>{
+    const scrollListener = () => {
+      if(window.scrollY > 100){
+        setBlackHeader(true)
+      }else{
+        setBlackHeader(false)
+      }
+    }
+
+    window.addEventListener('scroll', scrollListener);
+
+    return () => {
+      window.removeEventListener('scroll', scrollListener);
+    }
+  },[]);
+
   return (
+
+    
+
     <div className="HomePage">
-      <section className="featured">
-          {featuredData &&
-            <FeaturedMovie item={featuredData}/>
-          }
+
+      <section className="Header">
+        <Header black={blackHeader}/>
       </section>
+
+      <section className="featured">
+        {featuredData &&
+          <FeaturedMovie item={featuredData}/>
+        }
+      </section>
+
       <section className="lists">
+
         {MovieList.map((item, key)=>(
          
           <MovieRow key={key} title={item.title} items={item.items}/>
           
         ))}
+
       </section>
+
+      <footer>
+          Feito por Thauanny com a ajuda de B7Web
+          Direitos de imagem para Netflix
+          Dados pegos do site Themoviedb.org
+      </footer>
+
+      {MovieList.length <= 0 && 
+      <div className="loading">
+          <img src="https://www.sanluis24.com.ar/wp-content/uploads/2021/03/netflix-the-m-virus-sick-symbol.gif" alt="loading"></img>
+      </div>
+      }
     </div>
+
+   
+
+
   );
 }
 
